@@ -21,5 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/register',[UserController::class, 'register']);
-Route::post('/NewsUpload',[NewsUploadController::class, 'onNewsUpload']);
+//Route::post('/register',[UserController::class, 'register']);
+//Route::post('/NewsUpload',[NewsUploadController::class, 'onNewsUpload']);
+Route::get('/NewsRetrieve/{parameter?}',[NewsUploadController::class, 'onNewsRetrieve']);

@@ -28,4 +28,18 @@ class NewsUploadController extends Controller
             return 0;
         }
     }
+
+    function onNewsRetrieve($parameter = null)
+    {
+        if($parameter == null)
+        {
+            $result= NewsUpload::all();
+            return $result;
+        }
+        else
+        {
+            $result= NewsUpload::where(['news_catagory'=>$parameter])->get();
+            return $result;
+        }
+    }
 }
