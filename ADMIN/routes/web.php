@@ -17,3 +17,12 @@ use App\Http\Controllers\Upload_Article_Controller;
 
 Route::get('/',[HomeController::class, 'HomeIndex']);
 Route::get('/upload_article',[Upload_Article_Controller::class, 'ArticleIndex']);
+
+
+//Service Panel Routes
+// Route::get('/service','ServiceController@ServiceIndex');
+Route::get('/getArticleData',[Upload_Article_Controller::class, 'getArticleData']);
+Route::post('/deleteService','ServiceController@serviceDelete');
+Route::post('/ServiceDetails','ServiceController@getServiceDetails');
+Route::post('/ServiceUpdate','ServiceController@serviceUpdate');
+Route::post('/ServiceAdd','ServiceController@serviceAdd');
