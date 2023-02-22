@@ -8,11 +8,14 @@
 			<table id="articleDataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
 			  <thead>
 			    <tr>
-			      <th class="th-sm">Image</th>
-					  <th class="th-sm">Name</th>
-					  <th class="th-sm">Description</th>
-					  <th class="th-sm">Edit</th>
-					  <th class="th-sm">Delete</th>
+			      <th class="th-sm">news_headline</th>
+					  <th class="th-sm">news_description</th>
+					  <th class="th-sm">news_catagory</th>
+					  <th class="th-sm">upload_video</th>
+					  <th class="th-sm">thumbnail</th>
+                      <th class="th-sm">Created at</th>
+                      <th class="th-sm">Edit</th>
+                      <th class="th-sm">Delete</th>
 			    </tr>
 			  </thead>
 
@@ -68,9 +71,12 @@
       <div class="modal-body text-center p-3">
       	<h5 id = 'articleEditID' class = "d-none"></h5>
       	<div id = 'articleEditForm' class = 'w-100 d-none'>
-      		<input type="text" id = 'articleNameID' class = 'form-control mb-4' placeholder="article Name">
-	      	<input type="text" id = 'articleDesID' class = 'form-control mb-4' placeholder="article Description">
-	      	<input type="text" id = 'articleImgID' class = 'form-control mb-4' placeholder="article Image Link">
+      		<input type="text" id = 'articleHeadlineID' class = 'form-control mb-4' placeholder="Article Name">
+	      	<input type="text" id = 'articleDescriptionID' class = 'form-control mb-4' placeholder="Description">
+	      	<input type="text" id = 'articleCatagoryID' class = 'form-control mb-4' placeholder="Catagory">
+              <input type="text" id = 'articleVideoID' class = 'form-control mb-4' placeholder="video">
+	      	<input type="text" id = 'articleThumbnailID' class = 'form-control mb-4' placeholder="Thumbnail">
+
       	</div>
 
       	<img id = 'articleEditLoader' class='loading-icon m-5' src="{{asset('images/loader.svg')}}">
@@ -90,9 +96,11 @@
     <div class="modal-content">
       <div class="modal-body text-center p-3">
       	<div id = 'articleAddForm' class = 'w-100'>
-      		<input type="text" id = 'articleNameAddID' class = 'form-control mb-4' placeholder="article Name">
-	      	<input type="text" id = 'articleDesAddID' class = 'form-control mb-4' placeholder="article Description">
-	      	<input type="text" id = 'articleAddImgID' class = 'form-control mb-4' placeholder="article Image Link">
+            <input type="text" id = 'articleHeadlineAddID' class = 'form-control mb-4' placeholder="Article Name">
+            <input type="text" id = 'articleDescriptionAddID' class = 'form-control mb-4' placeholder="Description">
+            <input type="text" id = 'articleCatagoryAddID' class = 'form-control mb-4' placeholder="Catagory">
+            <input type="text" id = 'articleVideoAddID' class = 'form-control mb-4' placeholder="video">
+            <input type="text" id = 'articleThumbnailAddID' class = 'form-control mb-4' placeholder="Thumbnail">
       	</div>
       </div>
       <div class="modal-footer">
@@ -129,6 +137,9 @@ function getArticleData()
 					"<td>"+ jsonData[i].news_headline +"</td>" +
 					"<td>"+ jsonData[i].news_description +"</td>" +
                     "<td>"+ jsonData[i].news_catagory +"</td>" +
+                    "<td>"+ jsonData[i].upload_video +"</td>" +
+					"<td>"+ jsonData[i].thumbnail +"</td>" +
+                    "<td>"+ jsonData[i].created_at +"</td>" +
 					"<td><a class = 'articleEditBtn' data-id="+ jsonData[i].id +"><i class='fas fa-edit'></i></a></td>" +
 					"<td><a class = 'articleDeleteBtn' data-id="+ jsonData[i].id +" ><i class='fas fa-trash-alt'></i></a></td>"
 					).appendTo('#article_table')
@@ -177,7 +188,7 @@ function articleDelete(deleteId)
 {
 	$('#articleDeleteConfirmBtn').html("<div class='spinner-border spinner-border-sm' role='status'></div>") //Loading Animation
 
-	axios.post('/deletearticle',{id:deleteId})
+	axios.post('/articleDelete',{id:deleteId})
 	.then(function(response){
 		$('#articleDeleteConfirmBtn').html("Yes");
 
@@ -187,13 +198,13 @@ function articleDelete(deleteId)
 			{
 				$('#deleteModal').modal('hide');
 				toastr.success('Delete Success');
-				getarticleData();
+				getArticleData();
 			}
 			else
 			{
 				$('#deleteModal').modal('hide');
 				toastr.error('Delete Failed');
-				getarticleData();
+				getArticleData();
 			}
 		}
 		else
@@ -218,9 +229,11 @@ function articleUpdateDetails(detailsId)
 			$('#articleEditForm').removeClass('d-none');
 			$('#articleEditLoader').addClass('d-none');
 			var jsonData = response.data;
-			$('#articleNameID').val(jsonData[0].article_name);
-			$('#articleDesID').val(jsonData[0].article_des);
-			$('#articleImgID').val(jsonData[0].article_img);
+			$('#articleHeadlineID').val(jsonData[0].news_headline);
+			$('#articleDescriptionID').val(jsonData[0].news_description);
+			$('#articleCatagoryID').val(jsonData[0].news_catagory);
+            $('#articleVideoID').val(jsonData[0].upload_video);
+			$('#articleThumbnailID').val(jsonData[0].thumbnail);
 		}
 		else
 		{
@@ -238,24 +251,27 @@ function articleUpdateDetails(detailsId)
 $('#articleEditConfirmBtn').click(function(){
 	//var id = $(this).data('id');
 	var id = $('#articleEditID').html();
-	var article_name = $('#articleNameID').val();
-	var article_des = $('#articleDesID').val();
-	var article_img = $('#articleImgID').val();
+	var article_headline 	 = 	$('#articleHeadlineID').val();
+	var	article_description	 =	$('#articleDescriptionID').val();
+	var	article_catagory	 =	$('#articleCatagoryID').val();
+    var article_video        =	$('#articleVideoID').val();
+	var	article_thumbnail	 =  $('#articleThumbnailID').val();
+	var	article_created_time =	$('#CreatedAtID').val();
 
-	articleUpdate(id, article_name, article_des, article_img);
+	articleUpdate(id, article_headline, article_description, article_catagory, article_video, article_thumbnail, article_created_time);
 });
 
-function articleUpdate(articleID, articleName, articleDes,articleImg)
+function articleUpdate(id, article_headline, article_description, article_catagory, article_video, article_thumbnail, article_created_time)
 {
-	if(articleName.length == 0)
+	if(article_headline.length == 0)
 	{
 		toastr.error('article Name is Empty');
 	}
-	else if(articleDes.length == 0)
+	else if(article_description.length == 0)
 	{
 		toastr.error('article Description is Empty');
 	}
-	else if(articleImg.length == 0)
+	else if(article_catagory.length == 0)
 	{
 		toastr.error('article Image is Empty');
 	}
@@ -263,10 +279,13 @@ function articleUpdate(articleID, articleName, articleDes,articleImg)
 	{
 		$('#articleEditConfirmBtn').html("<div class='spinner-border spinner-border-sm' role='status'></div>") //Loading Animation
 		axios.post('/articleUpdate',{
-			id:articleID,
-			article_name:articleName,
-			article_des:articleDes,
-			article_img:articleImg
+			id:id,
+			article_headline:article_headline,
+			article_description:article_description,
+			article_catagory:article_catagory,
+            article_video:article_video,
+            article_thumbnail:article_thumbnail
+
 		})
 		.then(function(response){
 			if(response.status == 200)
@@ -276,13 +295,13 @@ function articleUpdate(articleID, articleName, articleDes,articleImg)
 				{
 					$('#editModal').modal('hide');
 					toastr.success('Update Success');
-					getarticleData();
+					getArticleData();
 				}
 				else
 				{
 					$('#editModal').modal('hide');
 					toastr.error('Update Failed');
-					getarticleData();
+					getArticleData();
 				}
 			}
 			else
@@ -307,35 +326,40 @@ $('#addNewBtnId').click(function(){
 
 //article Add Button Save Click
 $('#articleAddConfirmBtn').click(function(){
-	var article_name = $('#articleNameAddID').val();
-	var article_des = $('#articleDesAddID').val();
-	var article_img = $('#articleAddImgID').val();
+    var article_headline 	 = 	$('#articleHeadlineAddID').val();
+	var	article_description	 =	$('#articleDescriptionAddID').val();
+	var	article_catagory	 =	$('#articleCatagoryAddID').val();
+    var article_video        =	$('#articleVideoAddID').val();
+	var	article_thumbnail	 =  $('#articleThumbnailAddID').val();
+	var	article_created_time =	$('#CreatedAtAddID').val();
 
-	articleAdd(article_name, article_des, article_img);
+	articleAdd(article_headline, article_description, article_catagory, article_video, article_thumbnail, article_created_time);
 });
 
 //article Add Method
-function articleAdd(articleName, articleDes,articleImg)
+function articleAdd(article_headline, article_description, article_catagory, article_video, article_thumbnail, article_created_time)
 {
-	if(articleName.length == 0)
+	if(article_headline.length == 0)
 	{
-		toastr.error('article Name is Empty');
+		toastr.error('Article Name is Empty');
 	}
-	else if(articleDes.length == 0)
+	else if(article_description.length == 0)
 	{
-		toastr.error('article Description is Empty');
+		toastr.error('Article Description is Empty');
 	}
-	else if(articleImg.length == 0)
+	else if(article_catagory.length == 0)
 	{
-		toastr.error('article Image is Empty');
+		toastr.error('Article Catagory is Empty');
 	}
 	else
 	{
 		$('#articleAddConfirmBtn').html("<div class='spinner-border spinner-border-sm' role='status'></div>") //Loading Animation
 		axios.post('/articleAdd',{
-			article_name:articleName,
-			article_des:articleDes,
-			article_img:articleImg
+			article_headline:article_headline,
+			article_description:article_description,
+			article_catagory:article_catagory,
+            article_video:article_video,
+            article_thumbnail:article_thumbnail
 		})
 		.then(function(response){
 			if(response.status == 200)
@@ -345,13 +369,13 @@ function articleAdd(articleName, articleDes,articleImg)
 				{
 					$('#addModal').modal('hide');
 					toastr.success('Save Success');
-					getarticleData();
+					getArticleData();
 				}
 				else
 				{
 					$('#addModal').modal('hide');
 					toastr.error('Save Failed');
-					getarticleData();
+					getArticleData();
 				}
 			}
 			else

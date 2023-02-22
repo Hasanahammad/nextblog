@@ -22,7 +22,7 @@ Route::get('/upload_article',[Upload_Article_Controller::class, 'ArticleIndex'])
 //Service Panel Routes
 // Route::get('/service','ServiceController@ServiceIndex');
 Route::get('/getArticleData',[Upload_Article_Controller::class, 'getArticleData']);
-Route::post('/deleteService','ServiceController@serviceDelete');
-Route::post('/ServiceDetails','ServiceController@getServiceDetails');
-Route::post('/ServiceUpdate','ServiceController@serviceUpdate');
-Route::post('/ServiceAdd','ServiceController@serviceAdd');
+Route::post('/articleDelete',[Upload_Article_Controller::class, 'articleDelete']);
+Route::post('/articleDetails',[Upload_Article_Controller::class, 'getArticleDetails']);
+Route::post('/articleUpdate',[Upload_Article_Controller::class, 'articleUpdate']);
+Route::post('/articleAdd',[Upload_Article_Controller::class, 'articleAdd']);
