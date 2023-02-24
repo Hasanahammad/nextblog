@@ -98,9 +98,9 @@
       	<div id = 'articleAddForm' class = 'w-100'>
             <input type="text" id = 'articleHeadlineAddID' class = 'form-control mb-4' placeholder="Article Name">
             <input type="text" id = 'articleDescriptionAddID' class = 'form-control mb-4' placeholder="Description">
-            <input type="text" id = 'articleCatagoryAddID' class = 'form-control mb-4' placeholder="Catagory">
-            <input type="text" id = 'articleVideoAddID' class = 'form-control mb-4' placeholder="video">
-            <input type="text" id = 'articleThumbnailAddID' class = 'form-control mb-4' placeholder="Thumbnail">
+            <input type="text" id = 'articleCategoryAddID' class = 'form-control mb-4' placeholder="Catagory">
+            <input type="file" id='articleVideoAddID' class='form-control mb-4' accept="video/*">
+            <input type="file" id='articleThumbnailAddID' class='form-control mb-4' accept="image/*">
       	</div>
       </div>
       <div class="modal-footer">
@@ -326,41 +326,50 @@ $('#addNewBtnId').click(function(){
 
 //article Add Button Save Click
 $('#articleAddConfirmBtn').click(function(){
-    var article_headline 	 = 	$('#articleHeadlineAddID').val();
-	var	article_description	 =	$('#articleDescriptionAddID').val();
-	var	article_catagory	 =	$('#articleCatagoryAddID').val();
-    var article_video        =	$('#articleVideoAddID').val();
-	var	article_thumbnail	 =  $('#articleThumbnailAddID').val();
-	var	article_created_time =	$('#CreatedAtAddID').val();
+    var article_headline = $('#articleHeadlineAddID').val();
+    var article_description = $('#articleDescriptionAddID').val();
+    var article_category = $('#articleCategoryAddID').val();
+    var article_video = $('#articleVideoAddID').prop('files')[0];
+    var article_thumbnail = $('#articleThumbnailAddID').prop('files')[0];
+    var article_created_time = $('#CreatedAtAddID').val();
 
-	articleAdd(article_headline, article_description, article_catagory, article_video, article_thumbnail, article_created_time);
+    articleAdd(article_headline, article_description, article_category, article_video, article_thumbnail, article_created_time);
 });
 
 //article Add Method
-function articleAdd(article_headline, article_description, article_catagory, article_video, article_thumbnail, article_created_time)
+function articleAdd(article_headline, article_description, article_category, article_video, article_thumbnail, article_created_time)
 {
 	if(article_headline.length == 0)
-	{
-		toastr.error('Article Name is Empty');
-	}
-	else if(article_description.length == 0)
-	{
-		toastr.error('Article Description is Empty');
-	}
-	else if(article_catagory.length == 0)
-	{
-		toastr.error('Article Catagory is Empty');
-	}
+    {
+        toastr.error('Article Name is Empty');
+    }
+    else if(article_description.length == 0)
+    {
+        toastr.error('Article Description is Empty');
+    }
+    else if(article_category.length == 0)
+    {
+        toastr.error('Article Category is Empty');
+    }
+    else if(!article_video || !article_thumbnail)
+    {
+        toastr.error('Please select both video and thumbnail');
+    }
 	else
 	{
 		$('#articleAddConfirmBtn').html("<div class='spinner-border spinner-border-sm' role='status'></div>") //Loading Animation
-		axios.post('/articleAdd',{
-			article_headline:article_headline,
-			article_description:article_description,
-			article_catagory:article_catagory,
-            article_video:article_video,
-            article_thumbnail:article_thumbnail
-		})
+		var formData = new FormData();
+        formData.append('article_headline', article_headline);
+        formData.append('article_description', article_description);
+        formData.append('article_category', article_category);
+        formData.append('article_video', article_video);
+        formData.append('article_thumbnail', article_thumbnail);
+
+        axios.post('/articleAdd', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+        })
 		.then(function(response){
 			if(response.status == 200)
 			{
