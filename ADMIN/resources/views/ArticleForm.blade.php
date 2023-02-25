@@ -112,7 +112,7 @@ function articleAdd(article_headline, article_description, article_category, art
 				$('#articleAddConfirmBtn').html("Yes");
 				if(response.data == 1)
 				{
-					toastr.success('Save Success');
+					toastr.success('Save Done');
                     setTimeout(function() {
                     // Redirect to the new page
                     window.location = "{{ route('upload_article') }}";
