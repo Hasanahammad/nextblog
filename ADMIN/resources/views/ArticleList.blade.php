@@ -4,7 +4,6 @@
 <div id = "mainDiv" class="container d-none">
 	<div class="row">
 		<div class="col-md-12 p-5">
-			<button id = "addNewBtnId" class = "btn my-3 btn-sm btn-danger">Add New</button>
 			<table id="articleDataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
 			  <thead>
 			    <tr>
@@ -86,31 +85,6 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Cancel</button>
         <button  id = 'articleEditConfirmBtn' type="button" class="btn btn-sm btn-danger">Save</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog p-5">
-    <div class="modal-content">
-      <div class="modal-body text-center p-3">
-      	<div id = 'articleAddForm' class = 'w-100'>
-			<label for="articleHeadlineAddID">Article Name</label>
-            <input type="text" id = 'articleHeadlineAddID' class = 'form-control mb-4' placeholder="Article Name">
-			<label for="articleDescriptionAddID">Article Description</label>
-			<textarea type="text" id = 'articleDescriptionAddID' class = 'form-control mb-4' placeholder="Description"></textarea>
-			<label for="articleCategoryAddID">Article Category</label>
-			<input type="text" id = 'articleCategoryAddID' class = 'form-control mb-4' placeholder="Category">
-			<label for="articleVideoAddID">Upload Video</label>
-			<input type="file" id='articleVideoAddID' class='form-control mb-4' accept="video/*">
-            <label for="articleThumbnailAddID">Upload Thumbnail</label>
-			<input type="file" id='articleThumbnailAddID' class='form-control mb-4' accept="image/*">
-      	</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Cancel</button>
-        <button  id = 'articleAddConfirmBtn' type="button" class="btn btn-sm btn-danger">Save</button>
       </div>
     </div>
   </div>
@@ -328,81 +302,5 @@ $('#addNewBtnId').click(function(){
 	$('#addModal').modal('show');
 });
 
-
-//article Add Button Save Click
-$('#articleAddConfirmBtn').click(function(){
-    var article_headline = $('#articleHeadlineAddID').val();
-    var article_description = $('#articleDescriptionAddID').val();
-    var article_category = $('#articleCategoryAddID').val();
-    var article_video = $('#articleVideoAddID').prop('files')[0];
-    var article_thumbnail = $('#articleThumbnailAddID').prop('files')[0];
-    var article_created_time = $('#CreatedAtAddID').val();
-
-    articleAdd(article_headline, article_description, article_category, article_video, article_thumbnail, article_created_time);
-});
-
-//article Add Method
-function articleAdd(article_headline, article_description, article_category, article_video, article_thumbnail, article_created_time)
-{
-	if(article_headline.length == 0)
-    {
-        toastr.error('Article Name is Empty');
-    }
-    else if(article_description.length == 0)
-    {
-        toastr.error('Article Description is Empty');
-    }
-    else if(article_category.length == 0)
-    {
-        toastr.error('Article Category is Empty');
-    }
-    else if(!article_video || !article_thumbnail)
-    {
-        toastr.error('Please select both video and thumbnail');
-    }
-	else
-	{
-		$('#articleAddConfirmBtn').html("<div class='spinner-border spinner-border-sm' role='status'></div>") //Loading Animation
-		var formData = new FormData();
-        formData.append('article_headline', article_headline);
-        formData.append('article_description', article_description);
-        formData.append('article_category', article_category);
-        formData.append('article_video', article_video);
-        formData.append('article_thumbnail', article_thumbnail);
-
-        axios.post('/articleAdd', formData, {
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        }
-        })
-		.then(function(response){
-			if(response.status == 200)
-			{
-				$('#articleAddConfirmBtn').html("Yes");
-				if(response.data == 1)
-				{
-					$('#addModal').modal('hide');
-					toastr.success('Save Success');
-					getArticleData();
-				}
-				else
-				{
-					$('#addModal').modal('hide');
-					toastr.error('Save Failed');
-					getArticleData();
-				}
-			}
-			else
-			{
-				$('#addModal').modal('hide');
-				toastr.error('Hmm, Seems like Something is definatly Not Right');
-			}
-		})
-		.catch(function(error){
-			$('#addModal').modal('hide');
-			toastr.error('Hmm, Catch');
-		});
-	}
-}
-	</script>
+</script>
 @endsection

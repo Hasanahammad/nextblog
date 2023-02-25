@@ -16,12 +16,12 @@ use App\Http\Controllers\Upload_Article_Controller;
 */
 
 Route::get('/',[HomeController::class, 'HomeIndex']);
-Route::get('/upload_article',[Upload_Article_Controller::class, 'ArticleIndex']);
+Route::get('/upload_article',[Upload_Article_Controller::class, 'ArticleIndex'])->name('upload_article');
 
 
 //Service Panel Routes
 // Route::get('/service','ServiceController@ServiceIndex');
-Route::get('/getArticleData',[Upload_Article_Controller::class, 'getArticleData']);
+Route::get('/getArticleData',[Upload_Article_Controller::class, 'getArticleData'])->name('articleDetails');
 Route::post('/articleDelete',[Upload_Article_Controller::class, 'articleDelete']);
 Route::post('/articleDetails',[Upload_Article_Controller::class, 'getArticleDetails']);
 Route::post('/articleUpdate',[Upload_Article_Controller::class, 'articleUpdate']);
