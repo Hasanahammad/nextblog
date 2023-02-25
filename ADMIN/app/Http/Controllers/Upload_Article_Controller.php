@@ -49,11 +49,11 @@ class Upload_Article_Controller extends Controller
         $id = $request->input('id');
         $article_headline = $request->input('article_headline');
         $article_description = $request->input('article_description');
-        $article_catagory = $request->input('article_catagory');
+        $article_category = $request->input('article_category');
         $article_video = $request->input('article_video');
         $article_thumbnail = $request->input('article_thumbnail');
 
-        $result = NewsUpload::where('id',$id)->update(['news_headline'=>$article_headline, 'news_description'=>$article_description, 'news_catagory'=>$article_catagory, 'upload_video'=>$article_video, 'thumbnail'=>$article_thumbnail]);
+        $result = NewsUpload::where('id',$id)->update(['news_headline'=>$article_headline, 'news_description'=>$article_description, 'news_category'=>$article_category, 'upload_video'=>$article_video, 'thumbnail'=>$article_thumbnail]);
         if($result == true)
         {
             return 1;

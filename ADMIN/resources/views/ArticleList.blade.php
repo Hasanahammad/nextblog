@@ -10,7 +10,7 @@
 			    <tr>
 			      <th class="th-sm">news_headline</th>
 					  <th class="th-sm">news_description</th>
-					  <th class="th-sm">news_catagory</th>
+					  <th class="th-sm">news_category</th>
 					  <th class="th-sm">upload_video</th>
 					  <th class="th-sm">thumbnail</th>
                       <th class="th-sm">Created at</th>
@@ -73,7 +73,7 @@
       	<div id = 'articleEditForm' class = 'w-100 d-none'>
       		<input type="text" id = 'articleHeadlineID' class = 'form-control mb-4' placeholder="Article Name">
 	      	<input type="text" id = 'articleDescriptionID' class = 'form-control mb-4' placeholder="Description">
-	      	<input type="text" id = 'articleCatagoryID' class = 'form-control mb-4' placeholder="Catagory">
+	      	<input type="text" id = 'articleCategoryID' class = 'form-control mb-4' placeholder="Category">
               <input type="text" id = 'articleVideoID' class = 'form-control mb-4' placeholder="video">
 	      	<input type="text" id = 'articleThumbnailID' class = 'form-control mb-4' placeholder="Thumbnail">
 
@@ -99,9 +99,9 @@
 			<label for="articleHeadlineAddID">Article Name</label>
             <input type="text" id = 'articleHeadlineAddID' class = 'form-control mb-4' placeholder="Article Name">
 			<label for="articleDescriptionAddID">Article Description</label>
-			<textarea type="text" id = 'articleDescriptionAddID' class = 'form-control mb-4' placeholder="Description"></textarea> 
-			<label for="articleCatagoryAddID">Article Category</label>
-			<input type="text" id = 'articleCategoryAddID' class = 'form-control mb-4' placeholder="Catagory">
+			<textarea type="text" id = 'articleDescriptionAddID' class = 'form-control mb-4' placeholder="Description"></textarea>
+			<label for="articleCategoryAddID">Article Category</label>
+			<input type="text" id = 'articleCategoryAddID' class = 'form-control mb-4' placeholder="Category">
 			<label for="articleVideoAddID">Upload Video</label>
 			<input type="file" id='articleVideoAddID' class='form-control mb-4' accept="video/*">
             <label for="articleThumbnailAddID">Upload Thumbnail</label>
@@ -141,7 +141,7 @@ function getArticleData()
 					// "<td><img src="+jsonData[i].article_img+"></td>"+
 					"<td>"+ jsonData[i].news_headline +"</td>" +
 					"<td>"+ jsonData[i].news_description +"</td>" +
-                    "<td>"+ jsonData[i].news_catagory +"</td>" +
+                    "<td>"+ jsonData[i].news_category +"</td>" +
                     "<td>"+ jsonData[i].upload_video +"</td>" +
 					"<td>"+ jsonData[i].thumbnail +"</td>" +
                     "<td>"+ jsonData[i].created_at +"</td>" +
@@ -236,7 +236,7 @@ function articleUpdateDetails(detailsId)
 			var jsonData = response.data;
 			$('#articleHeadlineID').val(jsonData[0].news_headline);
 			$('#articleDescriptionID').val(jsonData[0].news_description);
-			$('#articleCatagoryID').val(jsonData[0].news_catagory);
+			$('#articleCategoryID').val(jsonData[0].news_category);
             $('#articleVideoID').val(jsonData[0].upload_video);
 			$('#articleThumbnailID').val(jsonData[0].thumbnail);
 		}
@@ -258,15 +258,15 @@ $('#articleEditConfirmBtn').click(function(){
 	var id = $('#articleEditID').html();
 	var article_headline 	 = 	$('#articleHeadlineID').val();
 	var	article_description	 =	$('#articleDescriptionID').val();
-	var	article_catagory	 =	$('#articleCatagoryID').val();
+	var	article_category	 =	$('#articleCategoryID').val();
     var article_video        =	$('#articleVideoID').val();
 	var	article_thumbnail	 =  $('#articleThumbnailID').val();
 	var	article_created_time =	$('#CreatedAtID').val();
 
-	articleUpdate(id, article_headline, article_description, article_catagory, article_video, article_thumbnail, article_created_time);
+	articleUpdate(id, article_headline, article_description, article_category, article_video, article_thumbnail, article_created_time);
 });
 
-function articleUpdate(id, article_headline, article_description, article_catagory, article_video, article_thumbnail, article_created_time)
+function articleUpdate(id, article_headline, article_description, article_category, article_video, article_thumbnail, article_created_time)
 {
 	if(article_headline.length == 0)
 	{
@@ -276,7 +276,7 @@ function articleUpdate(id, article_headline, article_description, article_catago
 	{
 		toastr.error('article Description is Empty');
 	}
-	else if(article_catagory.length == 0)
+	else if(article_category.length == 0)
 	{
 		toastr.error('article Image is Empty');
 	}
@@ -287,7 +287,7 @@ function articleUpdate(id, article_headline, article_description, article_catago
 			id:id,
 			article_headline:article_headline,
 			article_description:article_description,
-			article_catagory:article_catagory,
+			article_category:article_category,
             article_video:article_video,
             article_thumbnail:article_thumbnail
 
