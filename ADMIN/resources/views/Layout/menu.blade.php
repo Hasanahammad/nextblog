@@ -18,11 +18,41 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="nav-devider mt-0" style="margin-bottom: 5px"></li>
-                        <li> <a href="{{'/'}}" ><span> <i class="fa fa-tachometer-alt"></i> </span><span class="hide-menu">Dashboard</span></a></li>
-                        <li> <a href="{{'/'}}" ><span> <i class="fas fa-users"></i> </span><span class="hide-menu">Visitor</span></a></li>
-                    	<li> <a href="{{'/upload_article'}}" ><span> <i class="fas fa-file-upload"></i> </span><span class="hide-menu">Upload Article</span></a></li>
-					</ul>
+                        <li>
+                            <a href="{{'/'}}">
+                                <span><i class="fa fa-tachometer-alt"></i></span>
+                                <span class="hide-menu">Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{'/'}}">
+                                <span><i class="fas fa-users"></i></span>
+                                <span class="hide-menu">Visitor</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span><i class="fas fa-file-upload"></i></span>
+                                <span class="hide-menu">Upload Article</span>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="{{'/articleform'}}">
+                                        <span><i class="fas fa-edit"></i></span>
+                                        <span class="hide-menu">Article Form</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{'/upload_article'}}">
+                                        <span><i class="fas fa-list"></i></span>
+                                        <span class="hide-menu">Article List</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </nav>
             </div>
         </aside>
+        
 <div class="page-wrapper">

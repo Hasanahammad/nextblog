@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('css/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/datatables-select.min.css') }}">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.tiny.cloud/1/zrlg4d2yprm9m34p9rlxztjevctjkuiepq0gnakypqjedf8f/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body class="fix-header fix-sidebar">
     
@@ -35,6 +37,7 @@
     <script src="{{ asset('js/datatables-select.min.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
     <script src="{{ asset('js/axios.min.js') }}"></script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
     @yield('script')
 </body>

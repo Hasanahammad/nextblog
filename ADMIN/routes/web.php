@@ -26,3 +26,6 @@ Route::post('/articleDelete',[Upload_Article_Controller::class, 'articleDelete']
 Route::post('/articleDetails',[Upload_Article_Controller::class, 'getArticleDetails']);
 Route::post('/articleUpdate',[Upload_Article_Controller::class, 'articleUpdate']);
 Route::post('/articleAdd',[Upload_Article_Controller::class, 'articleAdd']);
+
+Route::get('/articleform',[Upload_Article_Controller::class, 'ArticleForm']);
+

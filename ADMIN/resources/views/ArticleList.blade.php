@@ -96,11 +96,16 @@
     <div class="modal-content">
       <div class="modal-body text-center p-3">
       	<div id = 'articleAddForm' class = 'w-100'>
+			<label for="articleHeadlineAddID">Article Name</label>
             <input type="text" id = 'articleHeadlineAddID' class = 'form-control mb-4' placeholder="Article Name">
-            <input type="text" id = 'articleDescriptionAddID' class = 'form-control mb-4' placeholder="Description">
-            <input type="text" id = 'articleCategoryAddID' class = 'form-control mb-4' placeholder="Catagory">
-            <input type="file" id='articleVideoAddID' class='form-control mb-4' accept="video/*">
-            <input type="file" id='articleThumbnailAddID' class='form-control mb-4' accept="image/*">
+			<label for="articleDescriptionAddID">Article Description</label>
+			<textarea type="text" id = 'articleDescriptionAddID' class = 'form-control mb-4' placeholder="Description"></textarea> 
+			<label for="articleCatagoryAddID">Article Category</label>
+			<input type="text" id = 'articleCategoryAddID' class = 'form-control mb-4' placeholder="Catagory">
+			<label for="articleVideoAddID">Upload Video</label>
+			<input type="file" id='articleVideoAddID' class='form-control mb-4' accept="video/*">
+            <label for="articleThumbnailAddID">Upload Thumbnail</label>
+			<input type="file" id='articleThumbnailAddID' class='form-control mb-4' accept="image/*">
       	</div>
       </div>
       <div class="modal-footer">

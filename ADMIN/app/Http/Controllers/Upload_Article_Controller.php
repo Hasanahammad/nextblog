@@ -10,7 +10,11 @@ class Upload_Article_Controller extends Controller
 {
     function ArticleIndex()
     {
-        return view('UploadArticle');
+        return view('ArticleList');
+    }
+    function ArticleForm()
+    {
+        return view('ArticleForm');
     }
 
     function getArticleData()
