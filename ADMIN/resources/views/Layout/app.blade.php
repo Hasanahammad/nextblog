@@ -38,7 +38,6 @@
     <script src="{{ asset('js/custom.js') }}"></script>
     <script src="{{ asset('js/axios.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     @yield('script')
 </body>

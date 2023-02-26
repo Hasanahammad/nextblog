@@ -70,13 +70,5 @@ li ul li a:hover {
   background-color: #5a5a5a;
 }
 
-/* Show sub-menu when hover over the parent menu item */
-#sidebarnav li.has_sub:hover > ul {
-  display: block;
-}
-/* Hide sub-menu by default */
-#sidebarnav ul {
-  display: none;
-}
 
 
