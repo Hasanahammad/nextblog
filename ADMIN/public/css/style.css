@@ -55,3 +55,17 @@ padding: 1% 1% 1% 1% ;
 .btn-light.dropdown-toggle {
   background-color: #ffffff!important;
 }
+
+Style for the main menu
+li a:hover {
+  background-color: #5a5a5a;
+}
+
+/* Style for the sub-menu */
+li ul li a:hover {
+  background-color: #5a5a5a;
+}
+
+.custom_nav_hover:hover{
+  background-color: #5a5a5a;
+}

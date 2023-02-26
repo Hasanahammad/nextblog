@@ -149,7 +149,7 @@ Main sidebar
 
 .fix-sidebar .left-sidebar nav li:hover a,
 .fix-sidebar .left-sidebar nav li:hover a i {
-    color: #EE1C25!important;
+    color: #ffffff!important;
     -webkit-transition: all .3s linear;
     -o-transition: all .3s linear;
     transition: all .3s linear;
@@ -365,7 +365,7 @@ sidebar navigation
 
     .sidebar-nav #sidebarnav > li:hover {
         /*        width: 260px;*/
-        background: #fff;
+        /* background: #fff; */
 
     }
 
@@ -588,3 +588,4 @@ sidebar navigation
     .vtabs .tabs-vertical {
         width: auto;
     }
+}
