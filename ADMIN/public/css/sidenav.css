@@ -363,6 +363,8 @@ sidebar navigation
         transition: all .3s linear;
     }
 
+    
+
     .sidebar-nav #sidebarnav > li:hover {
         /*        width: 260px;*/
         /* background: #fff; */
