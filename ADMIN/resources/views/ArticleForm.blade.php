@@ -3,20 +3,22 @@
 @section('content')
 
 <div id="articleAddForm" class="container" style="margin-top: 30px; margin-left: 10px;">
-    <div class="form-group">
-        <label for="articleHeadlineAddID">Article Name</label>
-        <input type="text" id="articleHeadlineAddID" class="form-control" placeholder="Article Name">
+    <label for="articleHeadlineAddID">Article Headline</label>
+    <div class="card form-group">
+        <div class="card-body">
+            <input type="text" id="articleHeadlineAddID" class="form-control" placeholder="Write Article Headline" style="border-color: #c8ffcf;">
+        </div>
     </div>
-    <div class="form-group">
-        <label for="articleDescriptionAddID">Article Description</label>
 
-        <textarea  id="articleDescriptionAddID"></textarea>
+    <label for="articleDescriptionAddID">Article Description</label>
+    <div class="card form-group">
+        <textarea class="card" id="articleDescriptionAddID"></textarea>
         {{-- <textarea type="text" id="articleDescriptionAddID" class="form-control" placeholder="Description"></textarea> --}}
     </div>
     <div class="form-group">
         <div class="form-group">
             <label for="Category">Select Category</label>
-            <select class="selectpicker form-control" id="Category" data-live-search="true" data-width="98%">
+            <select class="selectpicker form-control" id="Category" data-live-search="true" data-width="99%">
               <option>Select category</option>
               <option>Category 1</option>
               <option>Category 2</option>
@@ -28,7 +30,7 @@
     <div class="form-group">
         <div class="form-group">
             <label for="Category">Select Sub Category</label>
-            <select class="selectpicker form-control" id="SubCategory" data-live-search="true" data-width="98%">
+            <select class="selectpicker form-control" id="SubCategory" data-live-search="true" data-width="99%">
               <option>Select Sub category</option>
               <option>Category 1</option>
               <option>Category 2</option>
@@ -37,15 +39,16 @@
           </div>
     </div>
 
-    <div class="form-group">
-        <label for="articleVideoAddID">Upload Video</label>
+    <label for="articleVideoAddID">Upload Video</label>
+    <div class="card form-group">
         <div class="custom-file">
             <input type="file" class="custom-file-input" id="articleVideoAddID" accept="video/*">
             <label class="custom-file-label" for="articleVideoAddID">Choose file</label>
         </div>
     </div>
-    <div class="form-group">
-        <label for="articleThumbnailAddID">Upload Thumbnail</label>
+
+    <label for="articleThumbnailAddID">Upload Thumbnail</label>
+    <div class="card form-group">
         <div class="custom-file">
             <input type="file" class="custom-file-input" id="articleThumbnailAddID" accept="image/*">
             <label class="custom-file-label" for="articleThumbnailAddID">Choose file</label>
