@@ -14,9 +14,29 @@
         {{-- <textarea type="text" id="articleDescriptionAddID" class="form-control" placeholder="Description"></textarea> --}}
     </div>
     <div class="form-group">
-        <label for="articleCatagoryAddID">Article Category</label>
-        <input type="text" id="articleCategoryAddID" class="form-control" placeholder="Category">
+        <div class="form-group">
+            <label for="Category">Select Category</label>
+            <select class="selectpicker form-control" id="Category" data-live-search="true" data-width="98%">
+              <option>Select category</option>
+              <option>Category 1</option>
+              <option>Category 2</option>
+              <option>Category 3</option>
+            </select>
+          </div>
     </div>
+
+    <div class="form-group">
+        <div class="form-group">
+            <label for="Category">Select Sub Category</label>
+            <select class="selectpicker form-control" id="SubCategory" data-live-search="true" data-width="98%">
+              <option>Select Sub category</option>
+              <option>Category 1</option>
+              <option>Category 2</option>
+              <option>Category 3</option>
+            </select>
+          </div>
+    </div>
+
     <div class="form-group">
         <label for="articleVideoAddID">Upload Video</label>
         <div class="custom-file">
