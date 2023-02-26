@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Upload_Article_Controller;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,10 +30,14 @@ Route::post('/articleAdd',[Upload_Article_Controller::class, 'articleAdd']);
 
 Route::get('/articleform',[Upload_Article_Controller::class, 'ArticleForm']);
 
+
+
+//Category Routes
 Route::get('/add_category', function () {
     return view('Add_Category');
 });
+Route::post('/categoryAdd',[CategoryController::class, 'categoryAdd']);
+Route::get('/getCategoryData',[CategoryController::class, 'getCategoryData']);
 
-Route::get('/add_sub_category', function () {
-    return view('Add_sub_Category');
-});
+
+Route::get('/add_sub_category', [CategoryController::class, 'subCategory']);

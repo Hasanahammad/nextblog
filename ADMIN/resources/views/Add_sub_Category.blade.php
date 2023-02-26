@@ -4,7 +4,7 @@
 
 <!-- Button to open add category modal -->
 
-  
+
   <!-- DataTable to display category data -->
   <div id = "mainDiv" class="container">
 		<div class="col-md-12 p-5">
@@ -29,7 +29,7 @@
 		</div>
 	</div>
 </div>
-  
+
   <!-- Add Category Modal -->
   <div class="modal fade" id="addSubCategoryModal" tabindex="-1" role="dialog" aria-labelledby="addSubCategoryModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -49,11 +49,10 @@
             <div class="form-group">
               <label for="subCategoryCategory">Select Category</label>
               <select class="selectpicker form-control" id="subCategoryCategory" data-live-search="true" data-width="98%">
-                <option>Select category</option>
-                <option>Category 1</option>
-                <option>Category 2</option>
-                <option>Category 3</option>
-              </select>
+                @foreach ($categories as $category)
+                    <option>{{$category->category_name}}</option>
+                @endforeach
+                            </select>
             </div>
           </div>
           <div class="modal-footer">
@@ -64,9 +63,9 @@
       </div>
     </div>
   </div>
-  
-  
-         
+
+
+
 @endsection
 
 @section('script')

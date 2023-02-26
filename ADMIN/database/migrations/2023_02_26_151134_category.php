@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNewsUpload extends Migration
+class Category extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateNewsUpload extends Migration
      */
     public function up()
     {
-        Schema::create('news_upload', function (Blueprint $table) {
+        Schema::create('article_category', function (Blueprint $table) {
             $table->id();
-            $table->string('news_headline');
-            $table->string('news_description');
-            $table->string('news_category');
-            $table->string('upload_video');
-            $table->string('thumbnail');
+            $table->string('category_name');
+            $table->string('category_description');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateNewsUpload extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('news_upload');
+        //
     }
 }
