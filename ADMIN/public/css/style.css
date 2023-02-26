@@ -52,3 +52,6 @@ padding: 1% 1% 1% 1% ;
     object-fit: cover;
     height: 200px;
 }
+.btn-light.dropdown-toggle {
+  background-color: #ffffff!important;
+}

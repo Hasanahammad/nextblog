@@ -50,6 +50,28 @@
                                 </li>
                             </ul>
                         </li>
+
+                        <li>
+                            <a href="#">
+                                <span><i class="fas fa-sitemap"></i></span>
+                                <span class="hide-menu">Category</span>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="{{'/add_category'}}">
+                                        <span><i class="fas fa-clipboard-list"></i></span>
+                                        <span class="hide-menu">Add Category</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{'/add_sub_category'}}">
+                                        <span><i class="fas fa-clipboard-list"></i></span>
+                                        <span class="hide-menu">Add Sub Category</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </nav>
             </div>
