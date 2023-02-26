@@ -44,7 +44,7 @@
           <div class="modal-body">
             <div class="form-group">
               <label for="subcategoryName">Sub-Category Name</label>
-              <input type="text" class="form-control" id="subcategoryName" name="subcategoryName" placeholder="Enter sub-category name" required>
+              <input type="text" class="card form-control" id="subcategoryName" name="subcategoryName" placeholder="Enter sub-category name" required>
             </div>
             <div class="form-group">
               <label for="subCategoryCategory">Select Category</label>

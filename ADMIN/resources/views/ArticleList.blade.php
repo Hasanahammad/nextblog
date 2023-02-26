@@ -9,7 +9,8 @@
 			    <tr>
 			      <th class="th-sm">news_headline</th>
 					  <th class="th-sm">news_description</th>
-					  <th class="th-sm">news_category</th>
+					  <th class="th-sm">category</th>
+					  <th class="th-sm">Sub category</th>
 					  <th class="th-sm">upload_video</th>
 					  <th class="th-sm">thumbnail</th>
                       <th class="th-sm">Created at</th>
@@ -70,11 +71,60 @@
       <div class="modal-body text-center p-3">
       	<h5 id = 'articleEditID' class = "d-none"></h5>
       	<div id = 'articleEditForm' class = 'w-100 d-none'>
-      		<input type="text" id = 'articleHeadlineID' class = 'form-control mb-4' placeholder="Article Name">
+
+			<label for="articleHeadlineAddID">Article Headline</label>
+    		<div class="card form-group">
+        	<div class="card-body">
+            <input type="text" id="articleHeadlineAddID" class="form-control" placeholder="Write Article Headline" style="border-color: #c8ffcf;">
+        	</div>
+    		</div>
+
+    		<label for="articleDescriptionAddID">Article Description</label>
+    		<div class="card form-group">
+        	<textarea class="card" id="articleDescriptionAddID"></textarea>
+    		</div>
+
+        	<div class="form-group">
+            <label for="Category">Select Category</label>
+            <select class="selectpicker form-control" id="articleCategoryAddID" data-live-search="true" data-width="99%">
+              <option>Select category</option>
+              <option>Category 1</option>
+              <option>Category 2</option>
+              <option>Category 3</option>
+            </select>
+          	</div>
+
+        	<div class="form-group">
+            <label for="Category">Select Sub Category</label>
+            <select class="selectpicker form-control" id="articleCategoryAddID" data-live-search="true" data-width="99%">
+              <option>Select Sub category</option>
+              <option>Category 1</option>
+              <option>Category 2</option>
+              <option>Category 3</option>
+            </select>
+          	</div>
+
+    		<label for="articleVideoAddID">Upload Video</label>
+   	 		<div class="card form-group">
+        	<div class="custom-file">
+            <input type="file" class="custom-file-input" id="articleVideoAddID" accept="video/*">
+            <label class="custom-file-label" for="articleVideoAddID">Choose file</label>
+        	</div>
+    		</div>
+
+    		<label for="articleThumbnailAddID">Upload Thumbnail</label>
+    		<div class="card form-group">
+       	 	<div class="custom-file">
+            <input type="file" class="custom-file-input" id="articleThumbnailAddID" accept="image/*">
+            <label class="custom-file-label" for="articleThumbnailAddID">Choose file</label>
+        	</div>
+    		</div>
+
+      		{{-- <input type="text" id = 'articleHeadlineID' class = 'form-control mb-4' placeholder="Article Name">
 	      	<input type="text" id = 'articleDescriptionID' class = 'form-control mb-4' placeholder="Description">
 	      	<input type="text" id = 'articleCategoryID' class = 'form-control mb-4' placeholder="Category">
               <input type="text" id = 'articleVideoID' class = 'form-control mb-4' placeholder="video">
-	      	<input type="text" id = 'articleThumbnailID' class = 'form-control mb-4' placeholder="Thumbnail">
+	      	<input type="text" id = 'articleThumbnailID' class = 'form-control mb-4' placeholder="Thumbnail"> --}}
 
       	</div>
 
@@ -84,7 +134,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Cancel</button>
-        <button  id = 'articleEditConfirmBtn' type="button" class="btn btn-sm btn-danger">Save</button>
+        <button  id = 'articleEditConfirmBtn' type="button" class="btn btn-sm btn-danger">Update</button>
       </div>
     </div>
   </div>

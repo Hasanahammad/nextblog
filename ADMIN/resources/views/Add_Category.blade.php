@@ -7,11 +7,10 @@
 
   <!-- DataTable to display category data -->
   <div id = "mainDiv" class="container">
-		<div class="col-md-12 p-5">
+		<div class="p-5">
             <button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#addCategoryModal" style="margin-bottom: 20px;">
                 Add Category
               </button>
-            <div class="row">
 
 			<table id="CategoryTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
 			  <thead>
@@ -27,7 +26,6 @@
 			  </tbody>
 			</table>
 		</div>
-	</div>
 </div>
 
   <!-- Add Category Modal -->
@@ -44,11 +42,11 @@
           <div class="modal-body">
             <div class="mb-3">
                 <label for="categoryName" class="form-label">Category Name</label>
-                <input type="text" class="form-control" id="categoryName" name="categoryName" placeholder="Enter category name" required>
+                <input type="text" class="card form-control" id="categoryName" name="categoryName" placeholder="Enter category name" required>
             </div>
             <div class="mb-3">
                 <label for="categoryDescription" class="form-label">Category Description</label>
-                <textarea class="form-control" id="categoryDescription" name="categoryDescription" rows="3" placeholder="Enter category description"></textarea>
+                <textarea class="card form-control" id="categoryDescription" name="categoryDescription" rows="3" placeholder="Enter category description"></textarea>
             </div>
             </div>
             <div class="modal-footer">

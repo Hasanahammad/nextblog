@@ -18,7 +18,7 @@
     <div class="form-group">
         <div class="form-group">
             <label for="Category">Select Category</label>
-            <select class="selectpicker form-control" id="Category" data-live-search="true" data-width="99%">
+            <select class="selectpicker form-control" id="articleCategoryAddID" data-live-search="true" data-width="99%">
               <option>Select category</option>
               <option>Category 1</option>
               <option>Category 2</option>
@@ -27,17 +27,17 @@
           </div>
     </div>
 
-    <div class="form-group">
+   
         <div class="form-group">
             <label for="Category">Select Sub Category</label>
-            <select class="selectpicker form-control" id="SubCategory" data-live-search="true" data-width="99%">
+            <select class="selectpicker form-control" id="articleCategoryAddID" data-live-search="true" data-width="99%">
               <option>Select Sub category</option>
               <option>Category 1</option>
               <option>Category 2</option>
               <option>Category 3</option>
             </select>
           </div>
-    </div>
+ 
 
     <label for="articleVideoAddID">Upload Video</label>
     <div class="card form-group">
