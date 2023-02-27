@@ -21,7 +21,13 @@ class Upload_Article_Controller extends Controller
 
     function getArticleData()
     {
-        $result = json_encode(NewsUpload::all());
+        $result =NewsUpload::all();
+        foreach ($result as $row) {
+            $row->upload_video = asset('videos/' . $row->upload_video);
+            $row->thumbnail = asset('thumbnails/' . $row->thumbnail);
+        }
+
+        json_encode($result);
         return $result;
     }
 

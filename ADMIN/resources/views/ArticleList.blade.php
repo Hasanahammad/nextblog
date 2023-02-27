@@ -166,8 +166,8 @@ function getArticleData()
 					"<td>"+ jsonData[i].news_headline.substring(0, 20) +"...</td>" +
 					"<td>"+ jsonData[i].news_description.substring(0, 40) +"...</td>" +
                     "<td>"+ jsonData[i].news_category +"</td>" +
-                    "<td>"+ jsonData[i].upload_video.substring(0, 10) +"..</td>" +
-					"<td>"+ jsonData[i].thumbnail.substring(0, 10) +"..</td>" +
+                    "<td><video width='100' height='100' controls><source src='"+ jsonData[i].upload_video+"' type='video/mp4'></video></td>" +
+                    "<td><img src='"+ jsonData[i].thumbnail+"' width='100' height='100'></td>" +
                     "<td>"+ jsonData[i].created_at +"</td>" +
 					"<td><a class = 'articleEditBtn' data-id="+ jsonData[i].id +"><i class='fas fa-edit'></i></a></td>" +
 					"<td><a class = 'articleDeleteBtn' data-id="+ jsonData[i].id +" ><i class='fas fa-trash-alt'></i></a></td>"
