@@ -33,12 +33,21 @@ class NewsUploadController extends Controller
     {
         if($parameter == null)
         {
-            $result= NewsUpload::all();
+            $result= NewsUpload::select('id', 'news_headline', 'news_description', 'news_category', 'upload_video', 'thumbnail')->get();
+
+            foreach ($result as $row) {
+                $row->upload_video = asset('videos/' . $row->upload_video);
+                $row->thumbnail = asset('thumbnails/' . $row->thumbnail);
+            }
             return $result;
         }
         else
         {
-            $result= NewsUpload::where(['news_catagory'=>$parameter])->get();
+            $result= NewsUpload::where(['id'=>$parameter])->get();
+            foreach ($result as $row) {
+                $row->upload_video = asset('videos/' . $row->upload_video);
+                $row->thumbnail = asset('thumbnails/' . $row->thumbnail);
+            }
             return $result;
         }
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\NewsUpload;
+use App\Models\CategoryModel;
 use Illuminate\Support\Str;
 
 class Upload_Article_Controller extends Controller
@@ -14,7 +15,8 @@ class Upload_Article_Controller extends Controller
     }
     function ArticleForm()
     {
-        return view('ArticleForm');
+        $categories = CategoryModel::select('category_name')->get();
+        return view('ArticleForm', ['categories' => $categories]);
     }
 
     function getArticleData()
@@ -78,12 +80,15 @@ class Upload_Article_Controller extends Controller
         $article_video = $request->file('article_video');
         $video_extension = $article_video->getClientOriginalExtension();
         $video_filename = time() . '_' . Str::random(8) . '.' . $video_extension;
-        $path = $article_video->storeAs('public/videos', $video_filename);
+        // $path = $article_video->storeAs('public/videos', $video_filename);
+        $article_video->move(public_path('videos'), $video_filename);
 
         $article_thumbnail = $request->file('article_thumbnail');
         $thumbnail_extension = $article_thumbnail->getClientOriginalExtension();
         $thumbnail_filename = time() . '_' . Str::random(8) . '.' . $thumbnail_extension;
-        $thumbnail_path = $article_thumbnail->storeAs('public/thumbnails', $thumbnail_filename);
+        //$thumbnail_path = $article_thumbnail->storeAs('public/thumbnails', $thumbnail_filename);
+        $article_thumbnail->move(public_path('thumbnails'), $thumbnail_filename);
+
 
         $result = NewsUpload::insert([
             'news_headline' => $article_headline,

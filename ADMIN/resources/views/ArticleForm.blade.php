@@ -19,15 +19,15 @@
         <div class="form-group">
             <label for="Category">Select Category</label>
             <select class="selectpicker form-control" id="articleCategoryAddID" data-live-search="true" data-width="99%">
-              <option>Select category</option>
-              <option>Category 1</option>
-              <option>Category 2</option>
-              <option>Category 3</option>
+                @foreach ($categories as $catagory)
+                <option>{{$catagory->category_name}}</option>
+                @endforeach
+
             </select>
           </div>
     </div>
 
-   
+
         <div class="form-group">
             <label for="Category">Select Sub Category</label>
             <select class="selectpicker form-control" id="articleCategoryAddID" data-live-search="true" data-width="99%">
@@ -37,7 +37,7 @@
               <option>Category 3</option>
             </select>
           </div>
- 
+
 
     <label for="articleVideoAddID">Upload Video</label>
     <div class="card form-group">
