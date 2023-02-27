@@ -15,9 +15,12 @@
     <link rel="stylesheet" href="{{ asset('css/datatables-select.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-select.min.css') }}">
     <script src="https://cdn.tiny.cloud/1/zrlg4d2yprm9m34p9rlxztjevctjkuiepq0gnakypqjedf8f/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dropzone@5.9.2/dist/min/dropzone.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 </head>
 <body class="fix-header fix-sidebar">
-    
+
     @include('layout.menu')
     @yield('content')
 

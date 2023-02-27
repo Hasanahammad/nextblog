@@ -10,7 +10,7 @@
 			      <th class="th-sm">news_headline</th>
 					  <th class="th-sm">news_description</th>
 					  <th class="th-sm">category</th>
-					  <th class="th-sm">Sub category</th>
+					  {{-- <th class="th-sm">Sub category</th> --}}
 					  <th class="th-sm">upload_video</th>
 					  <th class="th-sm">thumbnail</th>
                       <th class="th-sm">Created at</th>
