@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\NewsUpload;
+use Illuminate\Support\Facades\Storage;
+
 
 class NewsUploadController extends Controller
 {
@@ -36,8 +38,10 @@ class NewsUploadController extends Controller
             $result= NewsUpload::select('id', 'news_headline', 'news_description', 'news_category', 'upload_video', 'thumbnail')->get();
 
             foreach ($result as $row) {
-                $row->upload_video = asset('videos/' . $row->upload_video);
-                $row->thumbnail = asset('thumbnails/' . $row->thumbnail);
+                // $row->upload_video = asset('videos/' . $row->upload_video);
+                // $row->thumbnail = asset('thumbnails/' . $row->thumbnail);
+                $row->upload_video = Storage::url('public/videos/' . $row->upload_video);
+                $row->thumbnail = Storage::url('public/thumbnails/' . $row->thumbnail);
             }
             return $result;
         }

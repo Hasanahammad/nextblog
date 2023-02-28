@@ -164,7 +164,7 @@ function getArticleData()
 				$('<tr>').html(
 					// "<td><img src="+jsonData[i].article_img+"></td>"+
 					"<td>"+ jsonData[i].news_headline.substring(0, 20) +"...</td>" +
-					"<td>"+ jsonData[i].news_description.substring(0, 40) +"...</td>" +
+					"<td>"+ jsonData[i].news_description +"</td>" +
                     "<td>"+ jsonData[i].news_category +"</td>" +
                     "<td><video width='100' height='100' controls><source src='"+ jsonData[i].upload_video+"' type='video/mp4'></video></td>" +
                     "<td><img src='"+ jsonData[i].thumbnail+"' width='100' height='100'></td>" +

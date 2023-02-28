@@ -83,17 +83,27 @@ class Upload_Article_Controller extends Controller
         $article_category = $request->input('article_category');
         //$article_created_time = $request->input('article_created_time');
 
+        // $article_video = $request->file('article_video');
+        // $video_extension = $article_video->getClientOriginalExtension();
+        // $video_filename = time() . '_' . Str::random(8) . '.' . $video_extension;
+        // // $path = $article_video->storeAs('public/videos', $video_filename);
+        // $article_video->move(public_path('videos'), $video_filename);
+
+        // $article_thumbnail = $request->file('article_thumbnail');
+        // $thumbnail_extension = $article_thumbnail->getClientOriginalExtension();
+        // $thumbnail_filename = time() . '_' . Str::random(8) . '.' . $thumbnail_extension;
+        // //$thumbnail_path = $article_thumbnail->storeAs('public/thumbnails', $thumbnail_filename);
+        // $article_thumbnail->move(public_path('thumbnails'), $thumbnail_filename);
+
         $article_video = $request->file('article_video');
         $video_extension = $article_video->getClientOriginalExtension();
         $video_filename = time() . '_' . Str::random(8) . '.' . $video_extension;
-        // $path = $article_video->storeAs('public/videos', $video_filename);
-        $article_video->move(public_path('videos'), $video_filename);
+        $article_video->store('public/videos');
 
         $article_thumbnail = $request->file('article_thumbnail');
         $thumbnail_extension = $article_thumbnail->getClientOriginalExtension();
         $thumbnail_filename = time() . '_' . Str::random(8) . '.' . $thumbnail_extension;
-        //$thumbnail_path = $article_thumbnail->storeAs('public/thumbnails', $thumbnail_filename);
-        $article_thumbnail->move(public_path('thumbnails'), $thumbnail_filename);
+        $article_thumbnail->store('public/thumbnails');
 
 
         $result = NewsUpload::insert([
