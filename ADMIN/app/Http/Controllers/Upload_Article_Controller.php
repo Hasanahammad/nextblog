@@ -22,10 +22,10 @@ class Upload_Article_Controller extends Controller
     function getArticleData()
     {
         $result =NewsUpload::all();
-        foreach ($result as $row) {
-            $row->upload_video = asset('videos/' . $row->upload_video);
-            $row->thumbnail = asset('thumbnails/' . $row->thumbnail);
-        }
+        // foreach ($result as $row) {
+        //     $row->upload_video = asset('videos/' . $row->upload_video);
+        //     $row->thumbnail = asset('thumbnails/' . $row->thumbnail);
+        // }
 
         json_encode($result);
         return $result;
@@ -76,34 +76,21 @@ class Upload_Article_Controller extends Controller
     {
         date_default_timezone_set('Asia/Dhaka');
         $article_created_time = date('Y-m-d H:i:s');
-
+        $host = $_SERVER['HTTP_HOST'];
 
         $article_headline = $request->input('article_headline');
         $article_description = $request->input('article_description');
         $article_category = $request->input('article_category');
-        //$article_created_time = $request->input('article_created_time');
 
-        // $article_video = $request->file('article_video');
-        // $video_extension = $article_video->getClientOriginalExtension();
-        // $video_filename = time() . '_' . Str::random(8) . '.' . $video_extension;
-        // // $path = $article_video->storeAs('public/videos', $video_filename);
-        // $article_video->move(public_path('videos'), $video_filename);
+        $videoPath = $request->file('article_video')->store('public');
+        $videoName = (explode('/',$videoPath))[1];
+        $video_filename = "http://".$host."/storage/".$videoName;
 
-        // $article_thumbnail = $request->file('article_thumbnail');
-        // $thumbnail_extension = $article_thumbnail->getClientOriginalExtension();
-        // $thumbnail_filename = time() . '_' . Str::random(8) . '.' . $thumbnail_extension;
-        // //$thumbnail_path = $article_thumbnail->storeAs('public/thumbnails', $thumbnail_filename);
-        // $article_thumbnail->move(public_path('thumbnails'), $thumbnail_filename);
+        $photoPath = $request->file('article_thumbnail')->store('public');
+        $photoName = (explode('/',$photoPath))[1];
+        $thumbnail_filename = "http://".$host."/storage/".$photoName;
 
-        $article_video = $request->file('article_video');
-        $video_extension = $article_video->getClientOriginalExtension();
-        $video_filename = time() . '_' . Str::random(8) . '.' . $video_extension;
-        $article_video->store('public/videos');
 
-        $article_thumbnail = $request->file('article_thumbnail');
-        $thumbnail_extension = $article_thumbnail->getClientOriginalExtension();
-        $thumbnail_filename = time() . '_' . Str::random(8) . '.' . $thumbnail_extension;
-        $article_thumbnail->store('public/thumbnails');
 
 
         $result = NewsUpload::insert([
