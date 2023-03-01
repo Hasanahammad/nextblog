@@ -70,5 +70,12 @@ li ul li a:hover {
   background-color: #5a5a5a;
 }
 
+td {
+  max-width: 150px; /* set maximum width of cell */
+  white-space: nowrap; /* prevent text from wrapping */
+  overflow: hidden; /* hide overflow */
+  text-overflow: ellipsis; /* add ellipsis to indicate truncated text */
+  height: 50px;
+}
 
 
