@@ -1,4 +1,4 @@
-@extends('Layout.app')
+@extends('layout.app')
 
 @section('content')
 
@@ -45,7 +45,8 @@
             <input type="file" class="custom-file-input" id="articleVideoAddID" accept="video/*">
             <label class="custom-file-label" for="articleVideoAddID">Choose file</label>
         </div>
-    </div>
+        {{-- <video class="imgPreview mt-3" id="imgPreview" src="{{asset('images/default-image.png')}}"> --}}
+            </div>
 
     <label for="articleThumbnailAddID">Upload Thumbnail</label>
     <div class="card form-group">
@@ -62,6 +63,15 @@
 @section('script')
 <script src="{{ asset('js/tinymce/tinymce.min.js') }}" referrerpolicy='origin'></script>
 <script>
+   $('#articleVideoAddID').change(function () {
+            var reader=new FileReader();
+            reader.readAsDataURL(this.files[0]);
+            reader.onload=function (event) {
+               var ImgSource= event.target.result;
+                $('#imgPreview').attr('src',ImgSource)
+            }
+        })
+
     tinymce.init({
 
         selector: '#articleDescriptionAddID',

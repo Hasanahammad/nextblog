@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Upload_Article_Controller;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,28 +18,35 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-Route::get('/',[HomeController::class, 'HomeIndex']);
-Route::get('/upload_article',[Upload_Article_Controller::class, 'ArticleIndex'])->name('upload_article');
+Route::get('/',[HomeController::class, 'HomeIndex'])->middleware('LoginCheckMiddleware');
+Route::get('/upload_article',[Upload_Article_Controller::class, 'ArticleIndex'])->name('upload_article')->middleware('LoginCheckMiddleware');
 
 
 //Service Panel Routes
 // Route::get('/service','ServiceController@ServiceIndex');
-Route::get('/getArticleData',[Upload_Article_Controller::class, 'getArticleData'])->name('articleDetails');
-Route::post('/articleDelete',[Upload_Article_Controller::class, 'articleDelete']);
-Route::post('/articleDetails',[Upload_Article_Controller::class, 'getArticleDetails']);
-Route::post('/articleUpdate',[Upload_Article_Controller::class, 'articleUpdate']);
-Route::post('/articleAdd',[Upload_Article_Controller::class, 'articleAdd'])->name('article_add');
+Route::get('/getArticleData',[Upload_Article_Controller::class, 'getArticleData'])->name('articleDetails')->middleware('LoginCheckMiddleware');
+Route::post('/articleDelete',[Upload_Article_Controller::class, 'articleDelete'])->middleware('LoginCheckMiddleware');
+Route::post('/articleDetails',[Upload_Article_Controller::class, 'getArticleDetails'])->middleware('LoginCheckMiddleware');
+Route::post('/articleUpdate',[Upload_Article_Controller::class, 'articleUpdate'])->middleware('LoginCheckMiddleware');
+Route::post('/articleAdd',[Upload_Article_Controller::class, 'articleAdd'])->name('article_add')->middleware('LoginCheckMiddleware');
 
-Route::get('/articleform',[Upload_Article_Controller::class, 'ArticleForm']);
+Route::get('/articleform',[Upload_Article_Controller::class, 'ArticleForm'])->middleware('LoginCheckMiddleware');
 
 
 
 //Category Routes
 Route::get('/add_category', function () {
     return view('Add_Category');
-});
-Route::post('/categoryAdd',[CategoryController::class, 'categoryAdd']);
-Route::get('/getCategoryData',[CategoryController::class, 'getCategoryData']);
+})->middleware('LoginCheckMiddleware');
+
+Route::post('/categoryAdd',[CategoryController::class, 'categoryAdd'])->middleware('LoginCheckMiddleware');
+Route::get('/getCategoryData',[CategoryController::class, 'getCategoryData'])->middleware('LoginCheckMiddleware');
 
 
-Route::get('/add_sub_category', [CategoryController::class, 'subCategory']);
+Route::get('/add_sub_category', [CategoryController::class, 'subCategory'])->middleware('LoginCheckMiddleware');
+
+
+//login route
+Route::get('/login', [LoginController::class, 'LoginIndex']);
+Route::post('/onLogin',[LoginController::class, 'onLogin']);
+Route::get('/logout', [LoginController::class, 'onLogout']);
