@@ -35,24 +35,31 @@ class NewsUploadController extends Controller
     {
         if($parameter == null)
         {
-            $result= NewsUpload::select('id', 'news_headline', 'news_description', 'news_category', 'upload_video', 'thumbnail')->get();
+            $result= NewsUpload::all();
 
-            foreach ($result as $row) {
-                // $row->upload_video = asset('videos/' . $row->upload_video);
-                // $row->thumbnail = asset('thumbnails/' . $row->thumbnail);
-                $row->upload_video = Storage::url('public/videos/' . $row->upload_video);
-                $row->thumbnail = Storage::url('public/thumbnails/' . $row->thumbnail);
-            }
+            // foreach ($result as $row) {
+            //     // $row->upload_video = asset('videos/' . $row->upload_video);
+            //     // $row->thumbnail = asset('thumbnails/' . $row->thumbnail);
+            //     $row->upload_video = Storage::url('public/videos/' . $row->upload_video);
+            //     $row->thumbnail = Storage::url('public/thumbnails/' . $row->thumbnail);
+            // }
             return $result;
         }
         else
         {
             $result= NewsUpload::where(['id'=>$parameter])->get();
-            foreach ($result as $row) {
-                $row->upload_video = asset('videos/' . $row->upload_video);
-                $row->thumbnail = asset('thumbnails/' . $row->thumbnail);
-            }
+            // foreach ($result as $row) {
+            //     $row->upload_video = asset('videos/' . $row->upload_video);
+            //     $row->thumbnail = asset('thumbnails/' . $row->thumbnail);
+            // }
             return $result;
         }
+    }
+
+    function NewsRetrieveUsingCategory($category)
+    {
+        $result= NewsUpload::where(['news_category'=>$category])->get();
+
+        return $result;
     }
 }
