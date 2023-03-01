@@ -24,12 +24,12 @@
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="{{'/'}}">
                                 <span><i class="fas fa-users"></i></span>
                                 <span class="hide-menu">Visitor</span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li>
                             <a href="#">
                                 <span><i class="fas fa-file-upload"></i></span>

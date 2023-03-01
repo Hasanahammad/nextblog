@@ -58,7 +58,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog p-5">
     <div class="modal-content">
     	<div class="modal-header">
@@ -68,7 +68,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body text-center p-3">
+      <div class="modal-body text-center p-3" style="max-height: 400px; overflow-y: auto;">
       	<h5 id = 'articleEditID' class = "d-none"></h5>
       	<div id = 'articleEditForm' class = 'w-100 d-none'>
 
