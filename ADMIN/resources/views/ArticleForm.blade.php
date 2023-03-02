@@ -39,22 +39,27 @@
           </div> --}}
 
 
-    <label for="articleVideoAddID">Upload Video</label>
-    <div class="card form-group">
-        <div class="custom-file">
-            <input type="file" class="custom-file-input" id="articleVideoAddID" accept="video/*">
-            <label class="custom-file-label" for="articleVideoAddID">Choose file</label>
-        </div>
-        {{-- <video class="imgPreview mt-3" id="imgPreview" src="{{asset('images/default-image.png')}}"> --}}
+          <div class="form-group">
+            <label for="articleVideoAddID">Upload Video</label>
+            <div class="card custom-file">
+              <input type="file" class="custom-file-input" id="articleVideoAddID" accept="video/*">
+              <label class="custom-file-label" for="articleVideoAddID">Choose file</label>
             </div>
+            <video id="video-preview" class="image_prev mt-2 d-none"></video>
+          </div>
 
-    <label for="articleThumbnailAddID">Upload Thumbnail</label>
-    <div class="card form-group">
-        <div class="custom-file">
-            <input type="file" class="custom-file-input" id="articleThumbnailAddID" accept="image/*">
-            <label class="custom-file-label" for="articleThumbnailAddID">Choose file</label>
-        </div>
-    </div>
+          <label for="articleThumbnailAddID">Upload Thumbnail</label>
+          <div class="form-group">
+            <div class="card custom-file">
+              <input type="file" class="custom-file-input" id="articleThumbnailAddID" accept="image/*">
+              <label class="custom-file-label" for="articleThumbnailAddID">Choose file</label>
+            </div>
+            <div id="thumbnailPreview" style="display:none">
+              <img id="thumbnailImage" class="thumb_image mt-2" src="#" alt="Thumbnail Preview" />
+            </div>
+          </div>
+
+
     <button type='button' id='articleAddConfirmBtn' class='btn btn-primary'>Publish</button>
 
 </div>
@@ -63,14 +68,60 @@
 @section('script')
 <script src="{{ asset('js/tinymce/tinymce.min.js') }}" referrerpolicy='origin'></script>
 <script>
-   $('#articleVideoAddID').change(function () {
-            var reader=new FileReader();
-            reader.readAsDataURL(this.files[0]);
-            reader.onload=function (event) {
-               var ImgSource= event.target.result;
-                $('#imgPreview').attr('src',ImgSource)
-            }
-        })
+
+//Image Input Preview Starts here
+// Listen for change event on the file input element
+document.getElementById("articleThumbnailAddID").addEventListener("change", function() {
+  // Get the selected file
+  var file = this.files[0];
+
+  // Check if the selected file is an image
+  if(file && file.type.match(/^image\//)) {
+    // Create a new FileReader object
+    var reader = new FileReader();
+
+    // Set up the reader to load the selected file
+    reader.onload = function() {
+      // Show the preview container
+      document.getElementById("thumbnailPreview").style.display = "block";
+
+      // Set the source of the preview image to the loaded data URL
+      document.getElementById("thumbnailImage").src = reader.result;
+    }
+
+    // Read the selected file as a data URL
+    reader.readAsDataURL(file);
+  } else {
+    // Clear the preview image if the selected file is not an image
+    document.getElementById("thumbnailImage").src = "";
+  }
+});
+
+
+
+//Video Input preview starts here
+const fileInput = document.getElementById('articleVideoAddID');
+const videoPreview = document.getElementById('video-preview');
+fileInput.addEventListener('change', (event) => {
+const file = event.target.files[0];
+const fileURL = URL.createObjectURL(file);
+videoPreview.src = fileURL;
+videoPreview.classList.remove('d-none');
+videoPreview.autoplay = true; // add autoplay attribute
+});
+document.addEventListener('dragover', (event) => {
+event.preventDefault();
+});
+
+document.addEventListener('drop', (event) => {
+event.preventDefault();
+const file = event.dataTransfer.files[0];
+const fileURL = URL.createObjectURL(file);
+videoPreview.src = fileURL;
+videoPreview.classList.remove('d-none');
+videoPreview.autoplay = true; // add autoplay attribute
+});
+
 
     tinymce.init({
 
