@@ -48,12 +48,12 @@
             </div>
             <video id="video-preview" class="image_prev mt-2 d-none"></video>
           </div>
-          <center><b><h5>OR</h5></b></center>
+          {{-- <center><b><h5>OR</h5></b></center>
           <div>
             <div>
                 <input type="text" id="youtube_video_link_ID" class="form-control" placeholder="Paste Youtube URL" style="border-color: #c8ffcf;">
             </div>
-        </div>
+        </div> --}}
       </div>
     </div>
 
