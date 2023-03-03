@@ -38,17 +38,26 @@
             </select>
           </div> --}}
 
-
+<div class="card">
+  <div class="card-body">
           <div class="form-group">
-            <label for="articleVideoAddID">Upload Video</label>
-            <div class="card custom-file">
+            <b><label for="articleVideoAddID">Upload Video</label></b>
+            <div class="custom-file">
               <input type="file" class="custom-file-input" id="articleVideoAddID" accept="video/*">
               <label class="custom-file-label" for="articleVideoAddID">Choose file</label>
             </div>
             <video id="video-preview" class="image_prev mt-2 d-none"></video>
           </div>
+          <center><b><h5>OR</h5></b></center>
+          <div>
+            <div>
+                <input type="text" id="youtube_video_link_ID" class="form-control" placeholder="Paste Youtube URL" style="border-color: #c8ffcf;">
+            </div>
+        </div>
+      </div>
+    </div>
 
-          <label for="articleThumbnailAddID">Upload Thumbnail</label>
+        <b><label for="articleThumbnailAddID" class="mt-3"><b>Upload Thumbnail</b></label>
           <div class="form-group">
             <div class="card custom-file">
               <input type="file" class="custom-file-input" id="articleThumbnailAddID" accept="image/*">
