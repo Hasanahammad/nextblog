@@ -59,7 +59,7 @@
 </div>
 
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog p-5">
+  <div class="modal-dialog p-5" style="max-width: 1000px;">
     <div class="modal-content">
     	<div class="modal-header">
         <h5 class="modal-title">Update article</h5>
