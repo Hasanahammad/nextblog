@@ -25,3 +25,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //Route::post('/NewsUpload',[NewsUploadController::class, 'onNewsUpload']);
 Route::get('/NewsRetrieve/{parameter?}',[NewsUploadController::class, 'onNewsRetrieve']);
 Route::get('/NewsRetrieveOnCategory/{category}',[NewsUploadController::class, 'NewsRetrieveUsingCategory']);
+
