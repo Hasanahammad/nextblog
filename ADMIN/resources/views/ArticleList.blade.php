@@ -134,8 +134,8 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Cancel</button>
-        <button  id = 'articleEditConfirmBtn' type="button" class="btn btn-sm btn-danger">Update</button>
+        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Cancel</button>
+        <button  id = 'articleEditConfirmBtn' type="button" class="btn btn-sm" style="background-color: black; color: white;">Update</button>
       </div>
     </div>
   </div>
