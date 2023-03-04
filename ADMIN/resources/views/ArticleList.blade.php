@@ -75,19 +75,19 @@
 			<label for="articleHeadlineAddID" style="text-align: left;">Update Article Headline</label>
     		<div class="card form-group">
         	<div class="card-body">
-            <input type="text" id="articleHeadlineAddID" class="form-control" style="border-color: #c8ffcf;">
+            <input type="text" id="articleHeadlineID" class="form-control" style="border-color: #c8ffcf;">
         	</div>
     		</div>
 			
 			<label for="articleDescriptionAddID">Update Article Description</label>
 			<div class="card form-group">
-				<textarea class="card" id="articleDescriptionEditID"></textarea>
+				<textarea class="card" id="articleDescriptionID"></textarea>
 				{{-- <textarea type="text" id="articleDescriptionAddID" class="form-control" placeholder="Description"></textarea> --}}
 			</div>
 
         	<div class="form-group">
             <label for="Category">Update Category</label>
-            <select class="selectpicker form-control" id="articleCategoryAddID" data-live-search="true" data-width="99%">
+            <select class="selectpicker form-control" id="articleCategoryID" data-live-search="true" data-width="99%">
               <option>Select category</option>
               <option>Category 1</option>
               <option>Category 2</option>
@@ -105,18 +105,18 @@
             </select>
           	</div> --}}
 
-    		<label for="articleVideoAddID">Update Video</label>
+    		<label for="articleVideoAddID">Upload New Video</label>
    	 		<div class="card form-group">
         	<div class="custom-file">
-            <input type="file" class="custom-file-input" id="articleVideoAddID" accept="video/*">
+            <input type="file" class="custom-file-input" id="articleVideoID" accept="video/*">
             <label class="custom-file-label" for="articleVideoAddID">Choose file</label>
         	</div>
     		</div>
 
-    		<label for="articleThumbnailAddID">Update Thumbnail</label>
+    		<label for="articleThumbnailAddID">Upload New Thumbnail</label>
     		<div class="card form-group">
        	 	<div class="custom-file">
-            <input type="file" class="custom-file-input" id="articleThumbnailAddID" accept="image/*">
+            <input type="file" class="custom-file-input" id="articleThumbnailID" accept="image/*">
             <label class="custom-file-label" for="articleThumbnailAddID">Choose file</label>
         	</div>
     		</div>
