@@ -58,7 +58,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="editModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog p-5">
     <div class="modal-content">
     	<div class="modal-header">
@@ -72,20 +72,21 @@
       	<h5 id = 'articleEditID' class = "d-none"></h5>
       	<div id = 'articleEditForm' class = 'w-100 d-none'>
 
-			<label for="articleHeadlineAddID">Article Headline</label>
+			<label for="articleHeadlineAddID" style="text-align: left;">Update Article Headline</label>
     		<div class="card form-group">
         	<div class="card-body">
-            <input type="text" id="articleHeadlineAddID" class="form-control" placeholder="Write Article Headline" style="border-color: #c8ffcf;">
+            <input type="text" id="articleHeadlineAddID" class="form-control" style="border-color: #c8ffcf;">
         	</div>
     		</div>
-
-    		<label for="articleDescriptionAddID">Article Description</label>
-    		<div class="card form-group">
-        	<textarea class="card" id="articleDescriptionAddID"></textarea>
-    		</div>
+			
+			<label for="articleDescriptionAddID">Update Article Description</label>
+			<div class="card form-group">
+				<textarea class="card" id="articleDescriptionEditID"></textarea>
+				{{-- <textarea type="text" id="articleDescriptionAddID" class="form-control" placeholder="Description"></textarea> --}}
+			</div>
 
         	<div class="form-group">
-            <label for="Category">Select Category</label>
+            <label for="Category">Update Category</label>
             <select class="selectpicker form-control" id="articleCategoryAddID" data-live-search="true" data-width="99%">
               <option>Select category</option>
               <option>Category 1</option>
@@ -94,7 +95,7 @@
             </select>
           	</div>
 
-        	<div class="form-group">
+        	{{-- <div class="form-group">
             <label for="Category">Select Sub Category</label>
             <select class="selectpicker form-control" id="articleCategoryAddID" data-live-search="true" data-width="99%">
               <option>Select Sub category</option>
@@ -102,9 +103,9 @@
               <option>Category 2</option>
               <option>Category 3</option>
             </select>
-          	</div>
+          	</div> --}}
 
-    		<label for="articleVideoAddID">Upload Video</label>
+    		<label for="articleVideoAddID">Update Video</label>
    	 		<div class="card form-group">
         	<div class="custom-file">
             <input type="file" class="custom-file-input" id="articleVideoAddID" accept="video/*">
@@ -112,7 +113,7 @@
         	</div>
     		</div>
 
-    		<label for="articleThumbnailAddID">Upload Thumbnail</label>
+    		<label for="articleThumbnailAddID">Update Thumbnail</label>
     		<div class="card form-group">
        	 	<div class="custom-file">
             <input type="file" class="custom-file-input" id="articleThumbnailAddID" accept="image/*">
@@ -144,6 +145,26 @@
 
 @section('script')
 	<script type="text/javascript">
+
+tinymce.init({
+
+selector: '#articleDescriptionEditID',
+plugins: 'link image lists',
+toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | link image',
+branding: false,
+menubar: false,
+height: 300,
+statusbar: false,
+init_instance_callback: function(editor) {
+	setTimeout(function() {
+
+		editor.ui.registry.get('logo').hide();
+	}, 100);
+}
+});
+
+
+
 		getArticleData();
 
 //For articles Table

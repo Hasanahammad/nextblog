@@ -97,3 +97,7 @@ td {
   box-shadow: 3px 3px 10px rgb(13 21 3);
   text-align: left;
 }
+
+.modal-dialog {
+  max-width: 1000px;
+}

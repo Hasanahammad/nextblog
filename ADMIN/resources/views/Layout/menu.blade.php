@@ -63,12 +63,12 @@
                                         <span class="hide-menu">Add Category</span>
                                     </a>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <a href="{{'/add_sub_category'}}">
                                         <span><i class="fas fa-clipboard-list"></i></span>
                                         <span class="hide-menu">Add Sub Category</span>
                                     </a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </li>
 
