@@ -29,7 +29,7 @@
 			<div class="card">
 				<div class="card-body">
 					<h3 class="count-card-title">2</h3>
-					<h3 class="count-card-text">Total Article</h3>
+					<h3 class="count-card-text">Article Published</h3>
 				</div>
 			</div>
 		</div>

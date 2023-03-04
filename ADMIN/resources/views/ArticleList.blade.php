@@ -7,12 +7,12 @@
 			<table id="articleDataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
 			  <thead>
 			    <tr>
-			      <th class="th-sm">news_headline</th>
-					  <th class="th-sm">news_description</th>
-					  <th class="th-sm">category</th>
+			      <th class="th-sm">Headline</th>
+					  <th class="th-sm">Description</th>
+					  <th class="th-sm">Category</th>
 					  {{-- <th class="th-sm">Sub category</th> --}}
-					  <th class="th-sm">upload_video</th>
-					  <th class="th-sm">thumbnail</th>
+					  <th class="th-sm">Video</th>
+					  <th class="th-sm">Thumbnail</th>
                       <th class="th-sm">Created at</th>
                       <th class="th-sm">Edit</th>
                       <th class="th-sm">Delete</th>
