@@ -78,7 +78,7 @@
             <input type="text" id="articleHeadlineID" class="form-control" style="border-color: #c8ffcf;">
         	</div>
     		</div>
-			
+
 			<label for="articleDescriptionAddID">Update Article Description</label>
 			<div class="card form-group">
 				<textarea class="card" id="articleDescriptionID"></textarea>
@@ -104,7 +104,7 @@
             </select>
           	</div> --}}
 
-    		<label for="articleVideoAddID">Upload New Video</label>
+    		<label for="articleVideoEditID">Upload New Video</label>
    	 		<div class="card form-group">
         	<div class="custom-file">
             <input type="file" class="custom-file-input" id="articleVideoID" accept="video/*">
@@ -112,7 +112,7 @@
         	</div>
     		</div>
 
-    		<label for="articleThumbnailAddID">Upload New Thumbnail</label>
+    		<label for="articleThumbnailEditID">Upload New Thumbnail</label>
     		<div class="card form-group">
        	 	<div class="custom-file">
             <input type="file" class="custom-file-input" id="articleThumbnailID" accept="image/*">

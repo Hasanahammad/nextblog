@@ -47,12 +47,12 @@ class NewsUploadController extends Controller
         }
         else
         {
-            $result= NewsUpload::where(['id'=>$parameter])->get();
+            $result= NewsUpload::where(['id'=>$parameter])->first();
             // foreach ($result as $row) {
             //     $row->upload_video = asset('videos/' . $row->upload_video);
             //     $row->thumbnail = asset('thumbnails/' . $row->thumbnail);
             // }
-            return response()->$result;
+            return response()->json($result);
 
         }
     }
