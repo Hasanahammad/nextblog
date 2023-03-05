@@ -52,7 +52,7 @@ class NewsUploadController extends Controller
             //     $row->upload_video = asset('videos/' . $row->upload_video);
             //     $row->thumbnail = asset('thumbnails/' . $row->thumbnail);
             // }
-            return response()->json($result);
+            return response()->$result;
 
         }
     }
