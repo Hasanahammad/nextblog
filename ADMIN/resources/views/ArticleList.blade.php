@@ -88,10 +88,9 @@
         	<div class="form-group">
             <label for="Category">Update Category</label>
             <select class="selectpicker form-control" id="articleCategoryID" data-live-search="true" data-width="99%">
-              <option>Select category</option>
-              <option>Category 1</option>
-              <option>Category 2</option>
-              <option>Category 3</option>
+              @foreach ($categories as $catagory)
+                <option>{{$catagory->category_name}}</option>
+                @endforeach
             </select>
           	</div>
 
@@ -148,7 +147,7 @@
 
 tinymce.init({
 
-selector: '#articleDescriptionEditID',
+selector: '#articleDescriptionID',
 plugins: 'link image lists',
 toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | link image',
 branding: false,
@@ -280,7 +279,7 @@ function articleUpdateDetails(detailsId)
 			$('#articleEditLoader').addClass('d-none');
 			var jsonData = response.data;
 			$('#articleHeadlineID').val(jsonData[0].news_headline);
-			$('#articleDescriptionID').val(jsonData[0].news_description);
+			tinymce.get('articleDescriptionID').setContent(jsonData[0].news_description);
 			$('#articleCategoryID').val(jsonData[0].news_category);
             $('#articleVideoID').val(jsonData[0].upload_video);
 			$('#articleThumbnailID').val(jsonData[0].thumbnail);
@@ -302,7 +301,7 @@ $('#articleEditConfirmBtn').click(function(){
 	//var id = $(this).data('id');
 	var id = $('#articleEditID').html();
 	var article_headline 	 = 	$('#articleHeadlineID').val();
-	var	article_description	 =	$('#articleDescriptionID').val();
+	var	article_description	 =	$('#articleDescriptionID').getContent();
 	var	article_category	 =	$('#articleCategoryID').val();
     var article_video        =	$('#articleVideoID').val();
 	var	article_thumbnail	 =  $('#articleThumbnailID').val();
@@ -323,7 +322,7 @@ function articleUpdate(id, article_headline, article_description, article_catego
 	}
 	else if(article_category.length == 0)
 	{
-		toastr.error('article Image is Empty');
+		toastr.error('article is Empty');
 	}
 	else
 	{

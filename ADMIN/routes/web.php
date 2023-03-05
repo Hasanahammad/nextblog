@@ -50,3 +50,9 @@ Route::get('/add_sub_category', [CategoryController::class, 'subCategory'])->mid
 Route::get('/login', [LoginController::class, 'LoginIndex']);
 Route::post('/onLogin',[LoginController::class, 'onLogin']);
 Route::get('/logout', [LoginController::class, 'onLogout']);
+
+Route::get('/storagelink', function(){
+    $targetFolder = storage_path('app/public');
+    $linkFolder = $_SERVER['DOCUMENT_ROOT'] . '/storage';
+    symlink($targetFolder,$linkFolder);
+});

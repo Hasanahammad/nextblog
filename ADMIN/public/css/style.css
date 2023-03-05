@@ -71,11 +71,12 @@ li ul li a:hover {
 }
 
 td {
-  max-width: 150px; /* set maximum width of cell */
+  max-width: 100px; /* set maximum width of cell */
   white-space: nowrap; /* prevent text from wrapping */
   overflow: hidden; /* hide overflow */
   text-overflow: ellipsis; /* add ellipsis to indicate truncated text */
-  height: 50px;
+  line-height: 1.2;
+  height: 20px;
 }
 
 .image_prev{

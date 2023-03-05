@@ -11,7 +11,8 @@ class Upload_Article_Controller extends Controller
 {
     function ArticleIndex()
     {
-        return view('ArticleList');
+        $categories = CategoryModel::select('category_name')->get();
+        return view('ArticleList', ['categories' => $categories]);
     }
     function ArticleForm()
     {
