@@ -38,7 +38,7 @@
             <div class="card bg-c-pink order-card">
                 <div class="card-block">
                     <h6 class="m-b-20">Total Tags</h6>
-                    <h2 class="text-right"><i class="fa fa-tags f-left"></i><span>486</span></h2>
+                    <h2 class="text-right">  <i class="fa fa-hashtag f-left"></i><span>486</span></h2>
                 </div>
             </div>
         </div>
