@@ -7,7 +7,8 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/mdb.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/mdb.min.css') }}"> --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="{{ asset('css/sidenav.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
@@ -31,7 +32,7 @@
     <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>
     <script src="{{ asset('js/sidebarmenu.js') }}"></script>
     <script src="{{ asset('js/sticky-kit.min.js') }}"></script>
