@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('css/mdb.min.css') }}"> --}}
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css" rel="stylesheet"/>
+    <link href="{{ asset('css/mdb.min.css') }}" rel="stylesheet"/>
     <link rel="stylesheet" href="{{ asset('css/sidenav.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
@@ -16,8 +16,12 @@
     <link rel="stylesheet" href="{{ asset('css/datatables-select.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-select.min.css') }}">
     <script src="https://cdn.tiny.cloud/1/zrlg4d2yprm9m34p9rlxztjevctjkuiepq0gnakypqjedf8f/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dropzone@5.9.2/dist/min/dropzone.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-3d@1.1.1/dist/chartjs-chart-3d.min.js"></script>
+
+
+   
+
 
 </head>
 <body class="fix-header fix-sidebar">
@@ -32,7 +36,7 @@
     <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{{ asset('js/mdb.min.js') }}" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>
     <script src="{{ asset('js/sidebarmenu.js') }}"></script>
     <script src="{{ asset('js/sticky-kit.min.js') }}"></script>
@@ -42,6 +46,8 @@
     <script src="{{ asset('js/custom.js') }}"></script>
     <script src="{{ asset('js/axios.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('js/chart.js') }}"></script>
+
 
     @yield('script')
 </body>
