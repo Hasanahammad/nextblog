@@ -1,18 +1,23 @@
 @extends('layout.app')
 
 @section('content')
-
+<div class="card" style="
+margin-left: 35px;
+margin-right: 35px;
+margin-top: 105px;
+">
+  <div class="card-body" style="margin-bottom: 50px;">
 <div id="articleAddForm" class="container" style="margin-top: 30px; margin-left: 10px;">
     <label for="articleHeadlineAddID">Article Headline</label>
-    <div class="card form-group">
-        <div class="card-body">
+    <div class="form-group">
+        <div>
             <input type="text" id="articleHeadlineAddID" class="form-control" placeholder="Write Article Headline" style="border-color: #c8ffcf;">
         </div>
     </div>
 
     <label for="articleDescriptionAddID">Article Description</label>
-    <div class="card form-group">
-        <textarea class="card" id="articleDescriptionAddID"></textarea>
+    <div class="form-group">
+        <textarea class="" id="articleDescriptionAddID"></textarea>
         {{-- <textarea type="text" id="articleDescriptionAddID" class="form-control" placeholder="Description"></textarea> --}}
     </div>
     <div class="form-group">
@@ -38,8 +43,8 @@
             </select>
           </div> --}}
 
-<div class="card">
-  <div class="card-body">
+<div class="">
+  <div class="">
           <div class="form-group">
             <b><label for="articleVideoAddID">Upload Video</label></b>
             <div class="custom-file">
@@ -59,7 +64,7 @@
 
         <b><label for="articleThumbnailAddID" class="mt-3"><b>Upload Thumbnail</b></label>
           <div class="form-group">
-            <div class="card custom-file">
+            <div class="custom-file">
               <input type="file" class="custom-file-input" id="articleThumbnailAddID" accept="image/*">
               <label class="custom-file-label" for="articleThumbnailAddID">Choose file</label>
             </div>
@@ -71,6 +76,8 @@
 
     <button type='button' id='articleAddConfirmBtn' class='btn btn-primary'>Publish</button>
 
+</div>
+  </div>
 </div>
 @endsection
 

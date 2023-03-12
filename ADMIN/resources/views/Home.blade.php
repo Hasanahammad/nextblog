@@ -51,7 +51,7 @@
             <div class="card chart-card">
                 <center><h5 style="margin-top: 25px;">Monthly Count</h5></center>
                 <div class="card-body d-flex justify-content-center align-items-center">
-                <canvas id="monthly-count-chart" style="padding: 5px;"></canvas> 
+                <canvas id="article-chart" style="padding: 5px;"></canvas> 
                 </div>
             </div>
         </div>
@@ -59,7 +59,7 @@
             <div class="card chart-card">
                 <center><h5 style="margin-top: 25px;">Overview</h5></center>
                 <div class="card-body d-flex justify-content-center align-items-center">
-                    <canvas id="doughnut-chart"></canvas> 
+                    <canvas id="doughnut-chart"></canvas>
                 </div>
             </div>           
         </div>
@@ -76,69 +76,92 @@
 <script>
 
     //For Every month Article Count
-    var ctx = document.getElementById('monthly-count-chart').getContext('2d');
+    // Get the canvas element and context
+var ctx = document.getElementById('article-chart').getContext('2d');
 
-var monthlyCountChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-        datasets: [{
-            label: 'Monthly Count',
-            backgroundColor: [
-                'rgb(81, 150, 255)',
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)',
-                'rgb(75, 192, 192)',
-                'rgb(255, 159, 64)',
-                'rgb(153, 102, 255)',
-                'rgb(255, 106, 106)',
-                'rgb(51, 217, 178)',
-                'rgb(255, 159, 243)',
-                'rgb(120, 120, 120)',
-                'rgb(65, 201, 223)'
-            ],
-            hoverBackgroundColor: [
-                'rgb(121, 184, 255)',
-                'rgb(255, 131, 157)',
-                'rgb(106, 191, 255)',
-                'rgb(255, 223, 153)',
-                'rgb(118, 221, 221)',
-                'rgb(255, 191, 116)',
-                'rgb(186, 146, 255)',
-                'rgb(255, 146, 146)',
-                'rgb(91, 233, 200)',
-                'rgb(255, 191, 243)',
-                'rgb(160, 160, 160)',
-                'rgb(100, 211, 233)'
-            ],
-            data: [10, 20, 15, 30, 25, 35, 40, 50, 45, 55, 60, 55],
-            borderRadius: 5,
-            shadowColor: 'rgba(0, 0, 0, 0.4)',
-            shadowBlur: 3,
-            shadowOffsetX: 10,
-            shadowOffsetY: 10
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        legend: {
-            display: false
-        },
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        },
-        elements: {
-            rectangle: {
-                cubicInterpolationMode: 'monotone' // or 'default'
-            }
-        }
-    }
+// Define the article data
+var articleData = [
+  { month: "January", count: 10 },
+  { month: "February", count: 15 },
+  { month: "March", count: 20 },
+  { month: "April", count: 12 },
+  { month: "May", count: 8 },
+  { month: "June", count: 14 },
+  { month: "July", count: 18 },
+  { month: "August", count: 22 },
+  { month: "September", count: 25 },
+  { month: "October", count: 30 },
+  { month: "November", count: 27 },
+  { month: "December", count: 24 }
+];
+
+// Extract the months and counts into separate arrays
+var months = articleData.map(function(d) { return d.month });
+var counts = articleData.map(function(d) { return d.count });
+
+// Create a new gradient for the fill color
+var gradient = ctx.createLinearGradient(0, 0, 0, 200);
+gradient.addColorStop(0, 'rgba(113, 83, 242, 1)');
+gradient.addColorStop(1, 'rgba(113, 83, 242, 0)');
+
+// Define the chart data
+var chartData = {
+  labels: months,
+  datasets: [{
+    label: 'Article Count',
+    data: counts,
+    borderColor: 'rgba(113, 83, 242, 1)',
+    borderWidth: 2,
+    pointBackgroundColor: 'rgba(113, 83, 242, 1)',
+    pointBorderColor: '#fff',
+    pointBorderWidth: 2,
+    pointRadius: 5,
+    fill: true,
+    backgroundColor: gradient
+  }]
+};
+
+// Define the chart options
+var chartOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  legend: {
+    display: false
+  },
+  scales: {
+    xAxes: [{
+      gridLines: {
+        display: false
+      },
+      ticks: {
+        fontColor: '#aaa',
+        fontSize: 12,
+        padding: 10
+      }
+    }],
+    yAxes: [{
+      gridLines: {
+        color: '#eee',
+        zeroLineColor: '#eee',
+        borderDash: [2],
+        borderDashOffset: [2],
+        drawBorder: false
+      },
+      ticks: {
+        fontColor: '#aaa',
+        fontSize: 12,
+        stepSize: 5,
+        padding: 10
+      }
+    }]
+  }
+};
+
+// Create the chart
+var myChart = new Chart(ctx, {
+  type: 'line',
+  data: chartData,
+  options: chartOptions
 });
 
 
@@ -146,12 +169,16 @@ var monthlyCountChart = new Chart(ctx, {
 //for user category count
 var ctx = document.getElementById('doughnut-chart').getContext('2d');
 
+var purpleGradient = ctx.createLinearGradient(0, 0, 0, 200);
+purpleGradient.addColorStop(0, '#8A2BE2');
+purpleGradient.addColorStop(1, '#9400D3');
+
 var doughnutChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
         labels: ['Total Categories', 'Total Users', 'Total Tags'],
         datasets: [{
-            backgroundColor: ['#f93154', '#0dcaf0', '#ffa900'],
+            backgroundColor: [purpleGradient, '#0dcaf0', '#ffa900'],
             data: [1000, 2000, 500]
         }]
     },
@@ -182,6 +209,7 @@ var doughnutChart = new Chart(ctx, {
         }
     }
 });
+
 
 
 

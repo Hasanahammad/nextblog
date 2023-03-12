@@ -11,7 +11,8 @@ body {
   
   /* Sidebar */
   .sidebar {
-    position: absolute;
+    background-color: #7153f2;
+    position: fixed;
     font-family: 'Roboto Condensed', sans-serif;
     width: 240px;
     height: 100%;
@@ -21,6 +22,15 @@ body {
     padding-top: 60px;
     -webkit-box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
     box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+    overflow-y: auto; 
+  }
+
+  .list-group-item{
+    background-color: #fff0;
+  }
+
+  .list-group-item:hover {
+    background-color: #c2c2c200; /* change to your desired hover background color */
   }
   
   @media (max-width: 991.98px) {
@@ -77,19 +87,19 @@ body {
 }
 
 .bg-c-blue {
-  background: linear-gradient(45deg, #00b4db, #0083b0);
+  background: linear-gradient(90deg, #e34989, #8a5dbd);
 }
 
 .bg-c-green {
-  background: linear-gradient(45deg, #76ff8c, #009639);
+  background: linear-gradient(90deg, #845dc1, #5631df);
 }
 
 .bg-c-yellow {
-  background: linear-gradient(45deg, #f9d423, #ff4e50);
+  background: linear-gradient(90deg, #45c1f3, #2d68f5);
 }
 
 .bg-c-pink {
-  background: linear-gradient(45deg, #ff547c, #7b00a0);
+  background: linear-gradient(90deg, #3fcdb7, #22aeca);
 }
 
 
